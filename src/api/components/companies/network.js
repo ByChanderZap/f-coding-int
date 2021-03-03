@@ -18,7 +18,7 @@ router.get('/', async (req, res, next) => {
     }
 })
 
-router.get('/:id', async (req, res, next) => {
+router.get('/:id', validationHandler({ _id: companyIdSchema }, 'params'), async (req, res, next) => {
     const { id } = req.params;
     try {
         const companie = await controller.compById(id);
@@ -32,7 +32,7 @@ router.get('/:id', async (req, res, next) => {
     }
 })
 
-router.put('/:id', async (req, res, next) => {
+router.put('/:id', validationHandler({ _id: companyIdSchema }, 'params'), validationHandler(createCompanySchema), async (req, res, next) => {
     const { id } = req.params;
     
     try {
@@ -47,7 +47,7 @@ router.put('/:id', async (req, res, next) => {
     }
 })
 
-router.post('/', async (req, res, next) => {
+router.post('/', validationHandler(createCompanySchema), async (req, res, next) => {
     const { name, description, symbol, market_value } = req.body;
     try {
         const created = await controller.create(name, description, symbol, market_value)
@@ -60,7 +60,7 @@ router.post('/', async (req, res, next) => {
     }
 })
 
-router.delete('/:id', async (req, res, next) => {
+router.delete('/:id', validationHandler({ _id: companyIdSchema }, 'params'), async (req, res, next) => {
     const { id } = req.params;
     
     try {
