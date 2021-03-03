@@ -29,8 +29,17 @@ const compById = async (id) => {
     return company;
 }
 
+const compUpdate = async (id, data) => {
+    const updated = await store.update(id, data);
+    if(!updated) {
+        throw boom.notFound('That company do not exists.')
+    }
+    return updated;
+}
+
 module.exports = {
     create,
     getCompanies,
-    compById
+    compById,
+    compUpdate
 }

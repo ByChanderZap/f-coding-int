@@ -8,7 +8,7 @@ const controller = require('./controller');
 router.get('/', async (req, res, next) => {
     try {
         const companies = await controller.getCompanies();
-        
+
         res.status(200).json({
             Message: "Here are every company",
             Companies: companies
@@ -22,9 +22,9 @@ router.get('/:id', async (req, res, next) => {
     const { id } = req.params;
     try {
         const companie = await controller.compById(id);
-        
+
         res.status(200).json({
-            Message: "Here are every company",
+            Message: "Here are every company.",
             companie
         });
     } catch (error) {
@@ -32,8 +32,21 @@ router.get('/:id', async (req, res, next) => {
     }
 })
 
+router.put('/:id', async (req, res, next) => {
+    const { id } = req.params;
+    
+    try {
+        const updated = await controller.compUpdate(id, req.body);
 
-//  Example of req.body validation
+        res.status(200).json({
+            Message: "Company updated.",
+            updated
+        });
+    } catch (error) {
+        next(error);
+    }
+})
+
 router.post('/', async (req, res, next) => {
     const { name, description, symbol, market_value } = req.body;
     try {

@@ -13,10 +13,14 @@ const getById = (id) => {
     return Companies.findById(id)
 }
 
+const update = (id, data) => {
+    return Companies.findByIdAndUpdate(id, data, {new: true});
+}
 
 
 module.exports = {
     create,
     getEvery,
-    getById
+    getById,
+    update
 }
