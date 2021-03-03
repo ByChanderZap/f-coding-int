@@ -18,21 +18,21 @@ router.get('/', async (req, res, next) => {
     }
 })
 
-router.get('/:id', validationHandler({ _id: companyIdSchema }, 'params'), async (req, res, next) => {
+router.get('/:id', validationHandler({ id: companyIdSchema }, 'params'), async (req, res, next) => {
     const { id } = req.params;
     try {
-        const companie = await controller.compById(id);
+        const company = await controller.compById(id);
 
         res.status(200).json({
             Message: "Here are every company.",
-            companie
+            company
         });
     } catch (error) {
         next(error);
     }
 })
 
-router.put('/:id', validationHandler({ _id: companyIdSchema }, 'params'), validationHandler(createCompanySchema), async (req, res, next) => {
+router.put('/:id', validationHandler({ id: companyIdSchema }, 'params'), validationHandler(updateCompanySchema), async (req, res, next) => {
     const { id } = req.params;
     
     try {
@@ -48,9 +48,9 @@ router.put('/:id', validationHandler({ _id: companyIdSchema }, 'params'), valida
 })
 
 router.post('/', validationHandler(createCompanySchema), async (req, res, next) => {
-    const { name, description, symbol, market_value } = req.body;
+    
     try {
-        const created = await controller.create(name, description, symbol, market_value)
+        const created = await controller.create(req.body)
         res.status(200).json({
             Message: "Company Created.",
             company: created
@@ -60,7 +60,7 @@ router.post('/', validationHandler(createCompanySchema), async (req, res, next) 
     }
 })
 
-router.delete('/:id', validationHandler({ _id: companyIdSchema }, 'params'), async (req, res, next) => {
+router.delete('/:id', validationHandler({ id: companyIdSchema }, 'params'), async (req, res, next) => {
     const { id } = req.params;
     
     try {

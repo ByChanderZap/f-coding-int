@@ -3,16 +3,12 @@ const store = require('./store');
 const boom = require("@hapi/boom");
 
 
-const create = (name, desc, sym, mark) => {
+const create = (company) => {
     const id = uuidv4();
-    const company = {
-        _id: id,
-        name,
-        description: desc,
-        symbol: sym,
-        market_value: mark
+
+    if(!company._id) {
+        company._id = id
     }
-    
     return store.create(company);
 }
 
