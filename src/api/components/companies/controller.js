@@ -19,13 +19,16 @@ const create = (name, desc, sym, mark) => {
 const getCompanies = async() => {
     const companies = await store.getEvery();
     if(companies.length === 0) {
-        throw boom.notFound('There is not companies');
+        throw boom.notFound('There is not companies.');
     }
     return companies
 }
 
 const compById = async (id) => {
     const company = await store.getById(id);
+    if(!company) {
+        throw boom.notFound('Company not found.')
+    }
     return company;
 }
 
@@ -37,9 +40,18 @@ const compUpdate = async (id, data) => {
     return updated;
 }
 
+const compDelete = async (id) => {
+    const deleted = await store.deleteComp(id);
+    if(!deleted) {
+        throw boom.notFound('That company do not exists.')
+    }
+    return deleted;
+}
+
 module.exports = {
     create,
     getCompanies,
     compById,
-    compUpdate
+    compUpdate,
+    compDelete
 }

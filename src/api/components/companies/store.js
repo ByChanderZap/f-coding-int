@@ -17,10 +17,15 @@ const update = (id, data) => {
     return Companies.findByIdAndUpdate(id, data, {new: true});
 }
 
+const deleteComp = (id) => {
+    return Companies.findByIdAndDelete(id);
+}
+
 
 module.exports = {
     create,
     getEvery,
     getById,
-    update
+    update,
+    deleteComp
 }

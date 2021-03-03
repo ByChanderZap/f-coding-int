@@ -60,4 +60,20 @@ router.post('/', async (req, res, next) => {
     }
 })
 
+router.delete('/:id', async (req, res, next) => {
+    const { id } = req.params;
+    
+    try {
+        const deleted = await controller.compDelete(id);
+
+        res.status(200).json({
+            Message: "Company updated.",
+            deleted
+        });
+    } catch (error) {
+        next(error);
+    }
+})
+
+
 module.exports = router;
