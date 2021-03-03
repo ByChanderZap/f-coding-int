@@ -16,6 +16,7 @@ router.get('/', (req, res, next) => {
 
 //  Example of req.body validation
 router.post('/', (req, res, next) => {
+    console.log(req.body)
     try {
         res.status(200).json({
             Message: "Ok"

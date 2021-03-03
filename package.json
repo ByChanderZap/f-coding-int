@@ -7,6 +7,10 @@
     "dev": "DEBUG=app:* nodemon src/index",
     "start": "NODE_ENV=production node src/index"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Searcher-PlatziMaster/searcher-backend.git"
+  },
   "keywords": [],
   "author": "@ByChanderZap",
   "license": "ISC",
