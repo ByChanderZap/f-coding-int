@@ -29,3 +29,6 @@ npm start
 ```bash
 npm run dev
 ```
+
+## Documentacion
+[Postman Documentation](https://documenter.getpostman.com/view/10936341/Tz5iA1RA)
