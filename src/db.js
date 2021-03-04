@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 const { config } = require('./config/index');
-
+// This code auto executes on require
 (async () => {
   try {
     const db = await mongoose.connect(config.DB_CONNECTION, {

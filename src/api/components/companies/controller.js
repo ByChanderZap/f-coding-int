@@ -1,12 +1,12 @@
 const { v4: uuidv4 } = require('uuid'); // Using uuid library to create the id for the documents
 const store = require('./store');
-const boom = require("@hapi/boom");
+const boom = require("@hapi/boom"); // Boom is my error throwing/handler
 
 
 const create = (company) => {
     const id = uuidv4();
 
-    if(!company._id) {
+    if(!company._id) {  // If the id not exist, i add it on the company
         company._id = id
     }
     return store.create(company);

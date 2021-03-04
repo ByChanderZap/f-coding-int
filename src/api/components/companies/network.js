@@ -1,7 +1,8 @@
 const express = require('express');
 const router = express.Router();
-const { companyIdSchema, createCompanySchema, updateCompanySchema } = require('../../../utils/validations/schemas/companies'); // eslint-disable-line
-// eslint-disable-next-line no-unused-vars
+
+//  I use joi as validations, this consist in a creation of schemas and a validation handler, passed as a middleware where we want to validate.
+const { companyIdSchema, createCompanySchema, updateCompanySchema } = require('../../../utils/validations/schemas/companies'); 
 const validationHandler = require('../../../utils/middlewares/validationHandler');
 const controller = require('./controller');
 

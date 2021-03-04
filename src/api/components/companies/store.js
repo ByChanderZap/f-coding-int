@@ -1,5 +1,6 @@
 const Companies = require('../../../db/models/companies');
 
+//  Im using the common mongoose functionalities to make it faster
 const create = (comp) => {
     const created = new Companies(comp);
     return created.save();

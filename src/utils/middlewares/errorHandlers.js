@@ -1,6 +1,14 @@
 const boom = require('@hapi/boom');
 const { config } = require('../../config/index');
 
+/**
+ * 
+ * This error handleling use 3 phases where error are logged, check the we are on development mode, check if its a boom error
+ * and then just throw the error to the client
+ * 
+ * 
+ */
+
 const errorStack = (err, stack) => {
     if (config.dev) {
         return {...err, stack}

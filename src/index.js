@@ -4,6 +4,14 @@ require('./db');
 const cors = require('cors');
 const helmet = require('helmet');
 const router = require('./api/routes/routes');
+const fs = require('fs');
+const morgan = require('morgan');
+const path = require('path');
+
+
+const finalPath = path.join(__dirname, 'logfile.log');
+const accessLog = fs.createWriteStream(finalPath, {flags: 'a'}); // Create a writable string to pass it on morgan initialization
+
 
 /*
     Im using a handler error with 3 steps, first check if error is boom, if not convert it to boom error.
@@ -29,10 +37,8 @@ app.use(cors());    //  I know use cors like this is a really bad implementation
 app.use(helmet());  //  Using Helmet for an extra protection setting a serie of http headers.
 
 // This is just because i like to see the morgan logs.
-if (config.dev) {
-    const morgan = require('morgan');
-    app.use(morgan('dev'));
-}
+app.use(morgan('common', {stream: accessLog}));
+
 
 // Routes
 router(app);
