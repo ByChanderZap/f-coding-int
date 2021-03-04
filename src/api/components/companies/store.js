@@ -5,6 +5,27 @@ const create = (comp) => {
     return created.save();
 }
 
+const getEvery = () => {
+    return Companies.find({});
+}
+
+const getById = (id) => {
+    return Companies.findById(id)
+}
+
+const update = (id, data) => {
+    return Companies.findByIdAndUpdate(id, data, {new: true});
+}
+
+const deleteComp = (id) => {
+    return Companies.findByIdAndDelete(id);
+}
+
+
 module.exports = {
-    create
+    create,
+    getEvery,
+    getById,
+    update,
+    deleteComp
 }

@@ -1,0 +1,27 @@
+language: node_js
+cache:
+  directories:
+    - node_modules
+    - ~/.npm
+node_js: 
+  - '12'
+git:
+  depth: 3
+script:
+  - echo "tests disabled temporaly"
+notifications:
+  email:
+    recipients:
+      - chander.zap@gmail.com
+    on_success: always
+    on_failure: always
+deploy:
+  provide: heroku
+  skip-cleanup: true
+  keep-history: true
+  api_key:
+    secure: "TZY2gzyTA7VbGQ1d7sWA16MZtuYHp0AW4xLMyw7HMFoCa0I3Q7ifub4MDZvslBcwy+iP0It8GMm6D0mTIbZTFb+TylAIpEDCl1u+jP1cOykYbfi5RY7SLt4Gf9+9df8R+UUJX/ZHjm3L7itORpM2E8tdj0pUwjD/7+LJepgb9t9ZbwzQJWLGHjNRiORYEyU/BfjX26duWFpfIpbrCbcPaShgoOR7wPKDCQJ23r1Cj1FweodNiQ9jkNGw28A0F/d3EjrYbOpxPWgJCoQbrmC9XEqPTuZUDpsc1VBUCuJAn5QtZI1GcRE5Gq3XXvqdktV8Rtr7sFvzO0GpBkW3J0c/2ZDPGs/1Ghv41j9jhYj1pnKvxahe5YfRozwyOSC5ZynwhstrVVCDQ6v45P4t9QpgB+DIRzlwbGMwJxlZnW25r/87BmxebQ/A22pBo5VwX+qKSRiKRyJxddfZzX6FKilycaIdzyA9p+5dazk9NZKrsES6q2BJGbeJGXDdgHaSSYasTA0B3zfl4OCTqmzBjYGSSbDtOCqRO2OfEVSg8VEd3AnzfWq7DdZBFdq8il0CktmmgWhbVIDR1mT6m5m6JqSJSC3H/sahcb//fu8PQZEMLIzydcsB0DBHBLbnFmuUGkSR+XS0UrpObrWiiR2zkihHWrsc82+29qUspZl6SQBzc0s="
+  app: coding-challenge-flink
+  on:
+    repo: ByChanderZap/f-coding-int
+

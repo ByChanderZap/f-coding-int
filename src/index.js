@@ -50,3 +50,5 @@ app.use(errorHandler);
 app.listen(config.port, () => {
     console.log(`Listening on: http://localhost:${config.port}`);
 })
+
+module.exports = app;
