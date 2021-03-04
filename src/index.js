@@ -10,7 +10,7 @@ const path = require('path');
 
 
 const finalPath = path.join(__dirname, 'logfile.log');
-const accessLog = fs.createWriteStream(finalPath, {flags: 'a'});
+const accessLog = fs.createWriteStream(finalPath, {flags: 'a'}); // Create a writable string to pass it on morgan initialization
 
 
 /*
