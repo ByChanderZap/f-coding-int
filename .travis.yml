@@ -26,4 +26,7 @@ deploy:
   app: coding-challenge-flink
   on:
     repo: ByChanderZap/f-coding-int
+    branches:    
+      only:      
+        - main 
 
